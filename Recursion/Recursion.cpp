@@ -108,8 +108,8 @@ void palindromicPartition(string ques, string ans)
     }
 }
 
-vector<int> diffWaysToCompute(string str) {
-        
+vector<int> diffWaysToCompute(string str) 
+{        
     vector<int> mr ;
 
     if(str.find('+') == string::npos && str.find('-') == string::npos && str.find('*') == string::npos)
@@ -142,7 +142,6 @@ vector<int> diffWaysToCompute(string str) {
         }
 
     }
-
     return mr ;
 }
 
@@ -164,12 +163,12 @@ int main()
     // cout << ways << endl ;
     // lexicoCounting(0,1000) ;
     // palindromicPartition("abccb", "") ;
-    vector<int> res = diffWaysToCompute("2*3-4*5") ;
+    // vector<int> res = diffWaysToCompute("2*3-4*5") ;
 
-    for(int val: res)
-        cout << val << endl ;
+    // for(int val: res)
+    //     cout << val << endl ;
 
-    // TOH(3, "S", "D", "H") ;
+    TOH(3, "S", "D", "H") ;
     return 0 ;
 }
 

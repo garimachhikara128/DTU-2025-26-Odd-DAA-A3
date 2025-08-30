@@ -26,34 +26,33 @@ void quickSort(int *arr, int lo, int hi)
     if(lo >= hi)
         return ;
 
+    // partitioning
+    int mid = (lo+hi)/2 ;
+    int pivot = arr[mid] ;
+
     int left = lo ;
     int right = hi ;
-    int mid = (lo+hi) / 2 ;
-
-    // partitioning step
-    int pivot = arr[mid] ;
 
     while(left <= right)
     {
-        // left stop problem
+        // left problem stop
         while(arr[left] < pivot)
             left++ ;
 
-        // right stop problem
+        // right problem stop
         while(arr[right] > pivot)
             right-- ;
 
-        // problem solve -> swap
         if(left <= right)
         {
-            int temp = arr[left] ;
-            arr[left] = arr[right] ;
-            arr[right] = temp ;
-            left++; 
+            swap(arr[left],arr[right]) ;
+            left++ ;
             right-- ;
         }
     }
 
-    quickSort(arr, lo, right) ;
-    quickSort(arr, left, hi) ;
+    // calls
+    quickSort(arr,lo,right) ;
+    quickSort(arr,left,hi) ;
+
 }

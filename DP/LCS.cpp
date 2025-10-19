@@ -51,10 +51,50 @@ int LCSTD(string s1, int idx1, string s2, int idx2, int **strg)
     return ans ;
 }
 
+// TC: s1.length() * s2.length()
+// SC: s1.length() * s2.length()
+int LCSBU(string s1, string s2)
+{
+    // strg array
+    int nr = s1.length() + 1 ;
+    int nc = s2.length() + 1 ;
+
+    int **strg = new int*[nr] ;
+    for(int i = 0 ; i < nr ; i++)
+        strg[i] = new int[nc] ;
+
+    // TD BC -> BU Fill
+    // last row fill
+    for(int j = 0 ; j < nc ; j++)
+        strg[nr-1][j] = 0 ;
+    // last col fill
+    for(int i = 0 ; i < nr ; i++)
+        strg[i][nc-1] = 0 ;
+
+    // fill
+    for(int i = nr-2 ; i >=0 ; i--)
+    {
+        for(int j = nc-2 ; j >=0 ; j--)
+        {
+            if(s1[i] == s2[j])
+            {
+                strg[i][j] = strg[i+1][j+1] + 1;
+            }
+            else
+            {
+                strg[i][j] = max(strg[i][j+1], strg[i+1][j]) ;
+            }
+        }
+    }
+
+    // answer return
+    return strg[0][0] ;
+}
+
 int main()
 {
-    string s1 = "abcdefghijklmnopqrstuvwxyz" ;
-    string s2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" ;
+    string s1 = "hdgshjgasfehfuiewhgfuiehrgivherioghve" ;
+    string s2 = "dgsfhefhuesrhgfuiehrjfkhsebufgsegfurgfudjkgjrguefiuv" ;
 
     // cout << LCSRec(s1,0,s2,0) << endl ;
 
@@ -70,7 +110,7 @@ int main()
 
     cout << LCSTD(s1,0,s2,0,strg) << endl ;
 
-    // cout << LCSBU(s1,s2) << endl ;
+    cout << LCSBU(s1,s2) << endl ;
 
     return 0 ; 
 }

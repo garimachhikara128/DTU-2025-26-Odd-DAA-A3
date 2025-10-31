@@ -66,3 +66,22 @@ class Heap
 
 } ;
 
+int main()
+{
+    Heap h ;
+    h.add(100) ;
+    h.add(30) ;
+    h.add(50) ;
+    h.add(10) ;
+    h.add(25) ;
+    h.add(15) ;
+
+    cout << h.get() << endl ;
+    h.remove() ;
+    cout << h.get() << endl ;
+    h.remove() ;
+    cout << h.get() << endl ;
+    h.remove() ;
+    
+    return 0 ;
+}
